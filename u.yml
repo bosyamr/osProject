@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-web-app
+spec:
+  selector:
+    matchLabels:
+      app: Muhamed
+  replicas: 3
+  template:
+    metadata: 
+      name: my-web-app
+      labels:
+        app: Muhamed
+    spec:
+      containers:
+        - name: my-nginx-app
+          image: basmamohamed/nginx-fci
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9000
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "1"
+            requests: 
+              memory: "100Mi"
